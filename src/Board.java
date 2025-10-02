@@ -1,4 +1,8 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+
 // IMPORTANT: Il ne faut pas changer la signature des méthodes
 // de cette classe, ni le nom de la classe.
 // Vous pouvez par contre ajouter d'autres méthodes (ça devrait
@@ -30,7 +34,7 @@ class Board
     // Ne pas changer la signature de cette méthode
     public void play(Move m, Mark mark){
         board[m.getRow()][m.getCol()] = mark;
-
+        //evaluate here ?
 
 
     }
@@ -84,5 +88,30 @@ class Board
         }
 
         return valide;
+    }
+
+    public void printBoard()
+    {
+        System.out.println("     0       1       2 ");
+        for (int i = 0; i < 3; i++) {
+            System.out.print((i) + " "); // row number
+            for (int j = 0; j < 3; j++) {
+                if(board[i][j] == Mark.EMPTY)
+                {
+                    System.out.print(" " + board[i][j] + " ");
+                }
+                else
+                {
+                    System.out.print("   " + board[i][j] + "   ");
+                }
+
+                if (j < 2) System.out.print("|");
+            }
+            System.out.println();
+            if (i < 2) {
+                System.out.println("  -------+-------+-------");
+            }
+        }
+
     }
 }
