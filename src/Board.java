@@ -31,6 +31,8 @@ class Board
     public void play(Move m, Mark mark){
         board[m.getRow()][m.getCol()] = mark;
 
+
+
     }
 
 
@@ -40,6 +42,25 @@ class Board
     // Ne pas changer la signature de cette méthode
     // TODO: 2025-10-02 modifier le retour pour le bon
     public int evaluate(Mark mark){
+
+        for (int i = 0; i < 3; i++) {
+            // Vérifie les 3 lignes
+            if (board[i][0] == mark && board[i][1] == mark && board[i][2] == mark) {
+                return 100;
+            }
+            //Vérifie les 3 colonnes
+            if (board[0][i] == mark && board[1][i] == mark && board[2][i] == mark) {
+                return 100;
+            }
+        }
+        //Vérifie la diagonale (haut droit à bas gauche)
+        if (board[0][0] == mark && board[1][1] == mark && board[2][2] == mark) {
+            return 100;
+        }
+        //Vérifie la diagonale (haut gauche à bas droit)
+        if (board[0][2] == mark && board[1][1] == mark && board[2][0] == mark) {
+            return 100;
+        }
 
         return 0;
     }
